@@ -29,6 +29,8 @@
         <th>Symbol</th>
         <th>Name</th>
         <th>Last Updated</th>
+        <th>High</th>
+        <th>Low</th>
         <th>Last Price</th>
       </tr>
     </thead>
@@ -37,7 +39,9 @@
         <td><button ng-click='removeSymbol(quote.Symbol)' class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-trash"></i></button></td>
         <td>{{quote.Symbol}}</td>
         <td>{{quote.Name}}</td>
-        <td>{{quote.Timestamp}}</td>
+        <td>{{quote.Timestamp | date:'medium'}}</td>
+        <td>{{quote.High}}</td>
+        <td>{{quote.Low}}</td>
         <td>{{quote.LastPrice}}</td>
       </tr>
     </tbody>

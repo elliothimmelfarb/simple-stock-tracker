@@ -1,5 +1,9 @@
 .addSymbol {width: 200px;}
 
+.getQuote {
+    margin-bottom: 18px;
+}
+
 .symbol {width: 50px;display: inline-block;text-align: center;}
 
 .adminDiv {

@@ -7,8 +7,6 @@ app.controller('mainCtrl', function($scope, User) {
 
   $scope.quotes = [];
 
-  $scope.quote = {};
-
   $scope.getQuote = (symbol) => {
     $scope.quote = {};
     User.getStock(symbol)
@@ -28,13 +26,8 @@ app.controller('mainCtrl', function($scope, User) {
 app.controller('accountCtrl', function(CurrentUser, User, $scope) {
   console.log('accountCtrl!');
   console.log('CurrentUser:', CurrentUser.data);
-  CurrentUser.data.symbols.forEach(symbol => {
-    console.log(symbol)
-    User.getStock(symbol)
-      .then(res => {
-        $scope.quotes.push(res.data);
-      });
-  });
+
+  getQuotes()
 
   $scope.addSymbol = (symbol) => {
     User.addSymbol(CurrentUser.data._id, symbol.toUpperCase())
@@ -61,8 +54,24 @@ app.controller('accountCtrl', function(CurrentUser, User, $scope) {
       })
       .catch(err => {
         console.log(err);
-      })
+      });
+  };
+
+  $scope.refresh = () => {
+    getQuotes();
   }
+
+  function getQuotes() {
+    $scope.quotes = [];
+    CurrentUser.data.symbols.forEach(symbol => {
+      console.log(symbol)
+      User.getStock(symbol)
+        .then(res => {
+          $scope.quotes.push(res.data);
+        });
+    });
+  }
+
 
 });
 
