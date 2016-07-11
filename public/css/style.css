@@ -1,0 +1,14 @@
+.addSymbol {width: 200px;}
+
+.symbol {width: 50px;display: inline-block;text-align: center;}
+
+.adminDiv {
+    position: relative;
+}
+
+.refresh {text-align: right;position: absolute;right: 0;bottom: 0;}
+
+.refreshButton {
+    vertical-align: bottom;
+    position: relative;
+}

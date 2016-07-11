@@ -1,0 +1,45 @@
+<h1>My Stocks</h1>
+
+<div class="row adminDiv">
+  <div class="col-xs-9">
+    <div class="addSymbol">
+      <form ng-submit='addSymbol(symbol)' class="form">
+        <div class="form-group">
+          <label>Add Symbol:</label>
+          <div class="form-inline">
+            <input ng-model='symbol' type="text" size='6' class='form-control' autocapitalize='characters'>
+            <span class='symbol'>{{symbol | uppercase}}</span>
+          </div>
+          <button class="btn btn-primary">Track Symbol</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="col-xs-3 refresh">
+    <button ng-click='refresh()' class="btn btn-success refreshButton">
+      <i class="glyphicon glyphicon-refresh"></i>
+    </button>
+  </div>
+</div>
+<div class="tableArea">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Remove</th>
+        <th>Symbol</th>
+        <th>Name</th>
+        <th>Last Updated</th>
+        <th>Last Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat='quote in quotes track by $index'>
+        <td><button ng-click='removeSymbol(quote.Symbol)' class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-trash"></i></button></td>
+        <td>{{quote.Symbol}}</td>
+        <td>{{quote.Name}}</td>
+        <td>{{quote.Timestamp}}</td>
+        <td>{{quote.LastPrice}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title><%= title %></title>
+
+  <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/bower_components/angular/angular.js"></script>
+  <script src="/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+  <script src="/bower_components/angular-cookies/angular-cookies.js"></script>
+
+  <script src="/js/module.js"></script>
+  <script src="/js/controllers.js"></script>
+  <script src="/js/services.js"></script>
+
+</head>
+<body ng-app='myApp' ng-controller='mainCtrl'>
+  <div class="container">
+    <h1><%= title %></h1>
+
+    <button class="btn btn-default" ui-sref='home'>Single Search</button>
+    <button ng-show='currentUser' class="btn btn-default" ui-sref='account'>My Tracked Stocks</button>
+
+    <button ng-hide='currentUser' class="btn btn-default" ui-sref='login'>Login</button>
+    <button ng-hide='currentUser' class="btn btn-default" ui-sref='register'>Register</button>
+    <button ng-show='currentUser' class="btn btn-default" ng-click='logout()'>Logout</button>
+
+    <span ng-show='currentUser'>Hello, {{currentUser.username}}!</span>
+
+    <div ui-view></div>
+
+  </div>
+</body>
+</html>
